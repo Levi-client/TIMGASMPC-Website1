@@ -110,24 +110,11 @@ export function PhotoCarousel({ ariaLabel, photos }: PhotoCarouselProps) {
             ))}
           </span>
         </button>
-        <button
-          className={`${styles.arrow} ${styles.previous}`}
-          type="button"
-          onClick={showPrevious}
-          aria-label="Previous gallery photo"
-        >
-          <ChevronLeft aria-hidden="true" />
-        </button>
-        <button
-          className={`${styles.arrow} ${styles.next}`}
-          type="button"
-          onClick={showNext}
-          aria-label="Next gallery photo"
-        >
-          <ChevronRight aria-hidden="true" />
-        </button>
       </div>
       <div className={styles.footer}>
+        <div className={styles.caption} aria-live="polite" aria-atomic="true">
+          <p>{currentPhoto.caption}</p>
+        </div>
         <div className={styles.dots} aria-label="Choose a gallery photo">
           {photos.map((photo, index) => (
             <button
@@ -139,6 +126,24 @@ export function PhotoCarousel({ ariaLabel, photos }: PhotoCarouselProps) {
               aria-current={index === currentIndex ? "true" : undefined}
             />
           ))}
+        </div>
+        <div className={styles.controls}>
+          <button
+            className={styles.arrow}
+            type="button"
+            onClick={showPrevious}
+            aria-label="Previous gallery photo"
+          >
+            <ChevronLeft aria-hidden="true" />
+          </button>
+          <button
+            className={styles.arrow}
+            type="button"
+            onClick={showNext}
+            aria-label="Next gallery photo"
+          >
+            <ChevronRight aria-hidden="true" />
+          </button>
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/shared/Button/Button";
 import { PageHeader } from "@/components/shared/PageHeader/PageHeader";
 import { coreValues, objectives, socialGoals } from "@/data/content";
@@ -18,6 +19,29 @@ const objectiveLabels = [
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
 export function AboutPage() {
+  const purposeSectionRef = useRef<HTMLElement>(null);
+  const [purposeVisible, setPurposeVisible] = useState(false);
+
+  useEffect(() => {
+    const section = purposeSectionRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setPurposeVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setPurposeVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.25, rootMargin: "0px 0px -8%" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div id="about">
       <PageHeader
@@ -60,7 +84,12 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className={`section ${styles.muted} ${styles.purposeSection}`}>
+      <section
+        ref={purposeSectionRef}
+        className={`section ${styles.muted} ${styles.purposeSection} ${
+          purposeVisible ? styles.purposeVisible : ""
+        }`}
+      >
         <div className={`container ${styles.purposeGrid}`}>
           <article>
             <p className="eyebrow">Our mission</p>

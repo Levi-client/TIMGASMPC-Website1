@@ -6,6 +6,10 @@ interface LoadingScreenProps {
 
 export function LoadingScreen({ children }: LoadingScreenProps) {
   useEffect(() => {
+    const revealContent = () => {
+      window.dispatchEvent(new Event("timgas:hero-ready"));
+    };
+
     const startAnimationTimer = setTimeout(() => {
       const loadingElement = document.getElementById("loading-screen");
       const logoContainer = document.getElementById("loading-logo");
@@ -14,6 +18,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
 
       if (!loadingElement || !logoContainer) {
         if (loadingElement) {
+          revealContent();
           loadingElement.style.opacity = "0";
           setTimeout(() => loadingElement.remove(), 400);
         }
@@ -21,6 +26,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
       }
 
       if (!navLogoTarget) {
+        revealContent();
         loadingElement.style.transition = "opacity 400ms ease";
         loadingElement.style.opacity = "0";
         setTimeout(() => loadingElement.remove(), 400);
@@ -55,6 +61,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
       }, 100);
 
       const cleanupTimer = setTimeout(() => {
+        revealContent();
         loadingElement.style.transition = "opacity 400ms ease";
         loadingElement.style.opacity = "0";
 

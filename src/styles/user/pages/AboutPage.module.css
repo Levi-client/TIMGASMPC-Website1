@@ -78,6 +78,30 @@
   padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 
+.purposeSection:not(.purposeVisible) .purposeGrid article {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.purposeVisible .purposeGrid article {
+  animation: purposeReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.purposeVisible .purposeGrid article:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+@keyframes purposeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .purposeGrid,
 .socialGrid {
   display: grid;
@@ -360,5 +384,16 @@
 
   .objectiveBoard {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .purposeSection:not(.purposeVisible) .purposeGrid article {
+    opacity: 1;
+    transform: none;
+  }
+
+  .purposeVisible .purposeGrid article {
+    animation: none;
   }
 }

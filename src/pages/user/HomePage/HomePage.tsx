@@ -1,4 +1,14 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  Coins,
+  HandCoins,
+  ShieldCheck,
+  Sprout,
+  Users,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/shared/Button/Button";
 import {
   PhotoCarousel,
@@ -80,9 +90,50 @@ const officePhotos: CarouselPhoto[] = [
 ];
 
 export function HomePage() {
+  const [heroReady, setHeroReady] = useState(false);
+  const [serviceRailVisible, setServiceRailVisible] = useState(false);
+  const serviceRailRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const revealHero = () => setHeroReady(true);
+    const fallbackTimer = window.setTimeout(revealHero, 3200);
+
+    window.addEventListener("timgas:hero-ready", revealHero, { once: true });
+
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener("timgas:hero-ready", revealHero);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!heroReady) return;
+
+    const section = serviceRailRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setServiceRailVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setServiceRailVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -5%" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [heroReady]);
+
   return (
     <>
-      <section id="home" className={styles.hero}>
+      <section
+        id="home"
+        className={`${styles.hero} ${heroReady ? styles.heroReady : ""}`}
+      >
         <picture className={styles.heroMedia}>
           <source
             type="image/avif"
@@ -119,25 +170,90 @@ export function HomePage() {
           </p>
           <div className={styles.heroActions}>
             <Button to="/#membership">
-              Become a member <ArrowRight size={18} />
+              <Users size={18} /> Become a member <ArrowRight size={18} />
             </Button>
             <Button
               to="/#about"
               variant="secondary"
               className={styles.heroSecondary}
             >
-              Discover our story
+              <BookOpen size={18} /> Discover our story
             </Button>
           </div>
+          <ul className={styles.heroTrust} aria-label="Cooperative strengths">
+            <li>
+              <Users aria-hidden="true" />
+              <span>
+                Stronger
+                <br />
+                communities
+              </span>
+            </li>
+            <li>
+              <ShieldCheck aria-hidden="true" />
+              <span>
+                Trusted
+                <br />
+                since 1995
+              </span>
+            </li>
+            <li>
+              <Sprout aria-hidden="true" />
+              <span>
+                Growing
+                <br />
+                together
+              </span>
+            </li>
+          </ul>
         </div>
-        <div className={styles.heroCurve} aria-hidden="true">
-          <svg
-            viewBox="0 0 1440 130"
-            preserveAspectRatio="none"
-            focusable="false"
-          >
-            <path d="M0 25C210 83 390 96 620 40C820-9 980 78 1198 49C1305 35 1375 24 1440 34V130H0V25Z" />
-          </svg>
+        <div className={styles.heroSweep} aria-hidden="true" />
+      </section>
+
+      <section
+        ref={serviceRailRef}
+        className={`${styles.serviceRail} ${
+          serviceRailVisible ? styles.serviceRailVisible : ""
+        }`}
+        aria-labelledby="services-title"
+      >
+        <div className={`container ${styles.serviceRailInner}`}>
+          <div className={styles.serviceIntro}>
+            <p className={styles.serviceEyebrow}>Our services</p>
+            <h2 id="services-title">
+              Building a stronger and more sustainable future.
+            </h2>
+          </div>
+          <div className={styles.serviceItems}>
+            <article>
+              <Coins aria-hidden="true" />
+              <div>
+                <h3>Savings &amp; deposits</h3>
+                <p>Reliable ways to grow your savings.</p>
+              </div>
+            </article>
+            <article>
+              <HandCoins aria-hidden="true" />
+              <div>
+                <h3>Loans &amp; credit</h3>
+                <p>Flexible financial support for your needs.</p>
+              </div>
+            </article>
+            <article>
+              <Sprout aria-hidden="true" />
+              <div>
+                <h3>Farm support</h3>
+                <p>Helping members build productive farms.</p>
+              </div>
+            </article>
+            <article>
+              <Users aria-hidden="true" />
+              <div>
+                <h3>Member benefits</h3>
+                <p>More value and opportunities for you.</p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
