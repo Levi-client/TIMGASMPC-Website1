@@ -1,11 +1,41 @@
 .story {
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2.25rem, 3vw, 3rem);
+  background: #fbfcfa;
 }
 
 .storyGrid {
   display: grid;
-  gap: clamp(2rem, 6vw, 5rem);
+  gap: clamp(1.75rem, 3vw, 3rem);
   align-items: start;
+}
+
+.officeVisual {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 0.9rem 0 0 0.9rem;
+}
+
+.officeVisual img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.65rem;
+  box-shadow: 0 1.25rem 2.5rem rgb(9 52 39 / 0.12);
+}
+
+.imageAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38%;
+  height: 44%;
+  background: var(--color-brand-700);
+  border-radius: 1rem 0.6rem 0.6rem 0.6rem;
 }
 
 .sectionHeading {
@@ -20,43 +50,124 @@
   line-height: 1.12;
 }
 
-.storyContent {
+.storyIntro {
   min-width: 0;
-  max-width: 46rem;
 }
 
-.lead {
-  margin-bottom: 1rem;
+.storyIntro h2 {
+  max-width: 25rem;
+  margin: 0;
   color: var(--color-brand-900);
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
-.storyContent > p:not(.lead) {
-  max-width: 42rem;
-  margin-bottom: 0;
-  font-size: clamp(0.92rem, 1.4vw, 1rem);
+.storyIntro > p:not(.aboutEyebrow) {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.55;
+}
+
+.aboutEyebrow,
+.purposeEyebrow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.aboutEyebrow::before,
+.purposeEyebrow::before {
+  width: 1.75rem;
+  height: 2px;
+  content: "";
+  background: var(--color-brand-700);
+}
+
+.aboutEyebrow::before {
+  display: none;
+}
+
+.trustSignals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trustSignals li {
+  display: flex;
+  min-width: 0;
+  gap: 0.55rem;
+  align-items: center;
+  color: var(--color-brand-900);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.trustSignals span {
+  display: grid;
+  flex: 0 0 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-brand-800);
+  background: #e6f1eb;
+  border-radius: 50%;
+  place-items: center;
+}
+
+.trustSignals svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.profileCard {
+  min-width: 0;
+  padding: clamp(1.1rem, 1.6vw, 1.35rem);
+  background: white;
+  border: 1px solid #dce5df;
+  border-radius: 0.75rem;
+  box-shadow: 0 1rem 2.5rem rgb(9 52 39 / 0.08);
+}
+
+.profileCard h3 {
+  margin: 0;
+  color: var(--color-brand-900);
+  font-family: var(--font-display);
+  font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+  line-height: 1.2;
+}
+
+.profileCard > p {
+  margin: 0.75rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.74rem;
+  line-height: 1.45;
 }
 
 .facts {
   display: grid;
   gap: 0;
-  margin: 1.75rem 0 0;
+  margin: 1rem 0 0;
   border-top: 1px solid var(--color-border);
 }
 
 .facts div {
   display: grid;
   gap: 0.2rem;
-  padding: 0.9rem 0;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--color-border);
 }
 
 .facts dt {
   color: var(--color-text-muted);
-  font-size: 0.72rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -65,17 +176,19 @@
 .facts dd {
   margin: 0;
   color: var(--color-brand-950);
-  font-size: clamp(0.92rem, 1.5vw, 1rem);
+  font-size: clamp(0.76rem, 1vw, 0.84rem);
   font-weight: 700;
   line-height: 1.4;
 }
 
 .muted {
-  background: var(--color-surface);
+  background: #eff6f2;
 }
 
 .purposeSection {
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  overflow: hidden;
 }
 
 .purposeSection:not(.purposeVisible) .purposeGrid article {
@@ -206,16 +319,46 @@
 }
 
 .purposeGrid article {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
   min-width: 0;
-  padding: clamp(1.2rem, 2.4vw, 1.65rem);
-  background: #eef6f1;
-  border: 1px solid #d6e6dc;
-  box-shadow: none;
+  padding: 0;
+  background: rgb(255 255 255 / 0.82);
+  border: 1px solid #d3e2da;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.75rem 2rem rgb(9 52 39 / 0.05);
 }
 
 .purposeGrid article:nth-child(2) {
-  background: #fbf6e9;
-  border-color: #eadfbe;
+  background: rgb(251 253 249 / 0.88);
+  border-color: #d3e2da;
+}
+
+.purposeContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+}
+
+.purposeIcon {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--color-brand-800);
+  background: #dcece3;
+  border-radius: 50%;
+  place-items: center;
+}
+
+.purposeGrid article:nth-child(2) .purposeIcon {
+  background: #dcece3;
+}
+
+.purposeIcon svg {
+  width: 1.65rem;
+  height: 1.65rem;
 }
 
 .purposeGrid h2 {
@@ -227,6 +370,61 @@
   max-width: 34rem;
   margin: 0;
   font-size: 0.92rem;
+}
+
+.purposeContent > p:last-of-type {
+  max-width: 31rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.purposeStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: auto 0 0;
+  padding: 0.9rem 0 0;
+  border-top: 1px solid var(--color-border);
+  list-style: none;
+}
+
+.purposeStats li {
+  display: grid;
+  min-width: 0;
+  gap: 0.3rem;
+  justify-items: center;
+  padding: 0 0.55rem;
+  color: var(--color-brand-900);
+  font-size: 0.64rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.purposeStats li + li {
+  border-left: 1px solid var(--color-border);
+}
+
+.purposeStats svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke-width: 1.8;
+}
+
+.purposeImage {
+  display: block;
+  width: 100%;
+  height: clamp(9rem, 16vw, 12rem);
+  margin-top: -0.25rem;
+  object-fit: cover;
+  object-position: center 68%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 24%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 24%);
+}
+
+.purposeGrid article:nth-child(2) .purposeImage {
+  object-position: center 65%;
 }
 
 .valueGrid {
@@ -330,7 +528,11 @@
 
 @media (min-width: 48rem) {
   .storyGrid {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .profileCard {
+    grid-column: 1 / -1;
   }
 
   .purposeGrid,
@@ -349,6 +551,22 @@
 }
 
 @media (max-width: 47.99rem) {
+  .story {
+    padding-block: 2.5rem;
+  }
+
+  .officeVisual {
+    padding: 0.65rem 0 0 0.65rem;
+  }
+
+  .officeVisual img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .trustSignals {
+    margin-top: 1.5rem;
+  }
+
   .purposeSection {
     padding-block: 1.75rem;
   }
@@ -358,7 +576,7 @@
   }
 
   .purposeGrid article {
-    padding: 0.9rem 1rem;
+    padding: 0;
   }
 
   .purposeGrid h2 {
@@ -367,12 +585,110 @@
 }
 
 @media (min-width: 68rem) {
+  .storyGrid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(19rem, 1fr);
+    gap: clamp(1.75rem, 2.5vw, 2.5rem);
+  }
+
+  .officeVisual {
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+
+  .officeVisual img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .storyIntro h2 {
+    max-width: 22rem;
+    font-size: 2.2rem;
+    line-height: 1.04;
+  }
+
+  .storyIntro > p:not(.aboutEyebrow) {
+    margin-top: 0.8rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .aboutEyebrow {
+    margin-bottom: 0.55rem;
+    font-size: 0.68rem;
+  }
+
+  .trustSignals {
+    gap: 0.55rem;
+    margin-top: 1.15rem;
+  }
+
+  .trustSignals li {
+    gap: 0.45rem;
+    font-size: 0.68rem;
+  }
+
+  .trustSignals span {
+    flex-basis: 2.15rem;
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .profileCard {
+    grid-column: auto;
+  }
+
+  .profileCard h3 {
+    font-size: 0.94rem;
+    text-wrap: balance;
+  }
+
+  .profileCard .facts div {
+    grid-template-columns: minmax(6.5rem, 0.7fr) minmax(0, 1.3fr);
+    gap: 0.65rem;
+  }
+
+  .profileCard .facts dd {
+    white-space: nowrap;
+    font-size: 0.7rem;
+  }
+
   .valueGrid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 30rem) {
+  .trustSignals {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.15rem;
+  }
+
+  .trustSignals li {
+    gap: 0.25rem;
+    font-size: 0.56rem;
+    white-space: nowrap;
+  }
+
+  .trustSignals span {
+    flex-basis: 1.7rem;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .trustSignals svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .purposeGrid article {
+    display: flex;
+  }
+
+  .purposeIcon {
+    width: 3rem;
+    height: 3rem;
+  }
+
   .cta > div {
     align-items: stretch;
     flex-direction: column;

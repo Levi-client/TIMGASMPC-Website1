@@ -92,7 +92,9 @@ const officePhotos: CarouselPhoto[] = [
 export function HomePage() {
   const [heroReady, setHeroReady] = useState(false);
   const [serviceRailVisible, setServiceRailVisible] = useState(false);
+  const [impactVisible, setImpactVisible] = useState(false);
   const serviceRailRef = useRef<HTMLElement>(null);
+  const impactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const revealHero = () => setHeroReady(true);
@@ -122,6 +124,28 @@ export function HomePage() {
         observer.disconnect();
       },
       { threshold: 0.2, rootMargin: "0px 0px -5%" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [heroReady]);
+
+  useEffect(() => {
+    if (!heroReady) return;
+
+    const section = impactRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setImpactVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setImpactVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8%" },
     );
 
     observer.observe(section);
@@ -257,7 +281,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className={styles.impact}>
+      <section
+        ref={impactRef}
+        className={`${styles.impact} ${
+          impactVisible ? styles.impactVisible : ""
+        }`}
+      >
         <div className={`container ${styles.impactGrid}`}>
           <PhotoCarousel
             ariaLabel="TIMGAS office photo gallery"
@@ -265,7 +294,10 @@ export function HomePage() {
           />
           <div className={styles.impactCopy}>
             <p className="eyebrow">Community purpose, close to home</p>
-            <h2>A long-standing partner in financial growth.</h2>
+            <h2>
+              <span>A long-standing partner</span>
+              <span>in financial growth.</span>
+            </h2>
             <p>
               Established on July 25, 1995, TIMGAS MPC works to uplift the
               economic status of its members through quality products and
@@ -285,9 +317,6 @@ export function HomePage() {
                 communities
               </li>
             </ul>
-            <Button to="/#about">
-              Learn about the cooperative <ArrowRight size={18} />
-            </Button>
           </div>
         </div>
       </section>

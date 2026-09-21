@@ -3,18 +3,8 @@
   min-width: 0;
   overflow: hidden;
   background: transparent;
-  border-radius: var(--radius-md);
+  border-radius: 0 8.5rem 8.5rem 0;
   box-shadow: 0 1.5rem 3.5rem rgb(7 32 24 / 0.14);
-}
-.carousel::before {
-  position: absolute;
-  z-index: 3;
-  top: 1.25rem;
-  left: 0;
-  width: 0.25rem;
-  height: 4rem;
-  content: "";
-  background: var(--color-gold-500);
 }
 .viewport {
   position: relative;
@@ -99,9 +89,14 @@
   min-height: 5rem;
   align-items: center;
   gap: 1.25rem;
-  padding: 0.85rem 1rem 0.85rem 1.25rem;
-  background: rgb(11 45 34 / 34%);
-  backdrop-filter: blur(3px) saturate(110%);
+  padding: 0.85rem 4.25rem 0.85rem 1.25rem;
+  background: linear-gradient(
+    90deg,
+    rgb(11 45 34 / 62%) 0%,
+    rgb(11 45 34 / 32%) 52%,
+    transparent 88%
+  );
+  backdrop-filter: none;
 }
 .caption {
   display: flex;
@@ -160,6 +155,9 @@
   gap: 0.5rem;
 }
 @media (max-width: 30rem) {
+  .carousel {
+    border-radius: 0 4.5rem 4.5rem 0;
+  }
   .arrow {
     width: 2.25rem;
     height: 2.25rem;
@@ -169,7 +167,13 @@
     grid-template-columns: 1fr auto;
     min-height: 3.75rem;
     gap: 0.5rem;
-    padding: 0.4rem 0.65rem 1rem 0.85rem;
+    padding: 0.4rem 1.75rem 1rem 0.85rem;
+    background: linear-gradient(
+      90deg,
+      rgb(11 45 34 / 68%) 0%,
+      rgb(11 45 34 / 34%) 68%,
+      transparent 100%
+    );
   }
   .dots {
     position: absolute;

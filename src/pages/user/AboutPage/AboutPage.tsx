@@ -1,6 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  BadgeCheck,
+  Gem,
+  HandHeart,
+  ShieldCheck,
+  Sprout,
+  Target,
+  Users,
+} from "lucide-react";
+import officeImage from "@/assets/images/website/optimized/front-view-960.webp";
+import missionStatsImage from "@/assets/images/website/timgas-mission-stats.webp";
+import visionStatsImage from "@/assets/images/website/timgas-vision-stats.webp";
 import { Button } from "@/components/shared/Button/Button";
-import { PageHeader } from "@/components/shared/PageHeader/PageHeader";
 import { coreValues, objectives, socialGoals } from "@/data/content";
 import styles from "@/styles/user/pages/AboutPage.module.css";
 
@@ -44,22 +55,42 @@ export function AboutPage() {
 
   return (
     <div id="about">
-      <PageHeader
-        compact
-        headingLevel={2}
-        eyebrow="About TIMGAS MPC"
-        title="A strong and trusted cooperative."
-        description="Established on July 25, 1995, TIMGAS MPC serves its members from Purok 5, Poblacion, Trinidad, Bohol, with the goal of improving their economic well-being through quality products and services."
-      />
-
       <section className={`section ${styles.story}`}>
         <div className={`container ${styles.storyGrid}`}>
-          <header className={styles.sectionHeading}>
-            <p className="eyebrow">Our identity</p>
-            <h2>Local roots and a shared purpose.</h2>
-          </header>
-          <div className={styles.storyContent}>
-            <p className={styles.lead}>{cooperativeName}</p>
+          <figure className={styles.officeVisual}>
+            <span className={styles.imageAccent} aria-hidden="true" />
+            <img
+              src={officeImage}
+              alt="TIMGAS MPC cooperative office in Trinidad, Bohol"
+            />
+          </figure>
+
+          <div className={styles.storyIntro}>
+            <p className={`eyebrow ${styles.aboutEyebrow}`}>About TIMGAS MPC</p>
+            <h2>A strong and trusted cooperative.</h2>
+            <p>
+              Established on July 25, 1995, TIMGAS MPC serves its members from
+              Purok 5, Poblacion, Trinidad, Bohol, with the goal of improving
+              their economic well-being through quality products and services.
+            </p>
+            <ul className={styles.trustSignals} aria-label="Cooperative strengths">
+              <li>
+                <span><ShieldCheck aria-hidden="true" /></span>
+                Member focused
+              </li>
+              <li>
+                <span><HandHeart aria-hidden="true" /></span>
+                Reliable services
+              </li>
+              <li>
+                <span><Users aria-hidden="true" /></span>
+                Community driven
+              </li>
+            </ul>
+          </div>
+
+          <aside className={styles.profileCard} aria-label="TIMGAS MPC profile">
+            <h3>{cooperativeName}</h3>
             <p>
               Commonly known as TIMGAS MPC, the cooperative was established on
               July 25, 1995. Its published vision, mission, objectives, core
@@ -80,7 +111,7 @@ export function AboutPage() {
                 <dd>Purok 5, Poblacion, Trinidad, Bohol</dd>
               </div>
             </dl>
-          </div>
+          </aside>
         </div>
       </section>
 
@@ -90,23 +121,53 @@ export function AboutPage() {
           purposeVisible ? styles.purposeVisible : ""
         }`}
       >
-        <div className={`container ${styles.purposeGrid}`}>
-          <article>
-            <p className="eyebrow">Our mission</p>
-            <h2>Uplift every member’s economic status.</h2>
-            <p>
-              To uplift the economic status of every member by providing quality
-              products and services.
-            </p>
+        <div className="container">
+          <div className={styles.purposeGrid}>
+          <article className={styles.purposeCard}>
+            <div className={styles.purposeContent}>
+              <span className={styles.purposeIcon}><Target aria-hidden="true" /></span>
+              <p className="eyebrow">Our mission</p>
+              <h2>Uplift every member’s economic status.</h2>
+              <p>
+                To uplift the economic status of every member by providing quality
+                products and services.
+              </p>
+              <ul className={styles.purposeStats} aria-label="Mission priorities">
+                <li><BadgeCheck aria-hidden="true" /><span>Quality products</span></li>
+                <li><ShieldCheck aria-hidden="true" /><span>Reliable services</span></li>
+                <li><Sprout aria-hidden="true" /><span>Member growth</span></li>
+              </ul>
+            </div>
+            <img
+              className={styles.purposeImage}
+              src={missionStatsImage}
+              alt="Productive green fields at sunrise"
+              loading="lazy"
+            />
           </article>
-          <article>
-            <p className="eyebrow">Our vision</p>
-            <h2>A strong and trusted cooperative.</h2>
-            <p>
-              A strong and trusted cooperative where members are progressive
-              with pride and dignity.
-            </p>
+          <article className={styles.purposeCard}>
+            <div className={styles.purposeContent}>
+              <span className={styles.purposeIcon}><Sprout aria-hidden="true" /></span>
+              <p className="eyebrow">Our vision</p>
+              <h2>A strong and trusted cooperative.</h2>
+              <p>
+                A strong and trusted cooperative where members are progressive
+                with pride and dignity.
+              </p>
+              <ul className={styles.purposeStats} aria-label="Vision priorities">
+                <li><Users aria-hidden="true" /><span>Progressive members</span></li>
+                <li><ShieldCheck aria-hidden="true" /><span>Trusted cooperative</span></li>
+                <li><Gem aria-hidden="true" /><span>Pride &amp; dignity</span></li>
+              </ul>
+            </div>
+            <img
+              className={styles.purposeImage}
+              src={visionStatsImage}
+              alt="Fresh green leaves growing in a field"
+              loading="lazy"
+            />
           </article>
+          </div>
         </div>
       </section>
 

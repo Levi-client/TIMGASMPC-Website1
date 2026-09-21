@@ -257,6 +257,40 @@
   overflow: hidden;
   background: #f7f8f3;
 }
+.impact:not(.impactVisible) .impactGrid > :first-child,
+.impact:not(.impactVisible) .impactCopy > * {
+  opacity: 0;
+  transform: translateY(1.4rem);
+}
+.impactVisible .impactGrid > :first-child,
+.impactVisible .impactCopy > * {
+  animation: impactFadeUp 0.64s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.impactVisible .impactCopy > :nth-child(1) {
+  animation-delay: 0.1s;
+}
+.impactVisible .impactCopy > :nth-child(2) {
+  animation-delay: 0.17s;
+}
+.impactVisible .impactCopy > :nth-child(3) {
+  animation-delay: 0.24s;
+}
+.impactVisible .impactCopy > :nth-child(4) {
+  animation-delay: 0.31s;
+}
+.impactVisible .impactCopy > :nth-child(5) {
+  animation-delay: 0.38s;
+}
+@keyframes impactFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .hero:not(.heroReady) .heroMedia {
   opacity: 0;
   transform: translateX(7%) scale(1.025);
@@ -331,8 +365,11 @@
 .impactCopy h2 {
   max-width: 35rem;
   margin-bottom: 1.35rem;
-  font-size: clamp(2.35rem, 4vw, 3.6rem);
+  font-size: clamp(2.15rem, 3vw, 3.05rem);
   line-height: 1.02;
+}
+.impactCopy h2 span {
+  display: block;
 }
 .impactCopy > p:not(.eyebrow) {
   max-width: 35rem;
@@ -501,6 +538,10 @@
   text-decoration: none;
 }
 @media (min-width: 48rem) {
+  .impactCopy h2 span {
+    white-space: nowrap;
+  }
+
   .serviceRailInner {
     grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 2.15fr);
     align-items: center;
@@ -661,6 +702,15 @@
   }
   .serviceRailVisible .serviceIntro,
   .serviceRailVisible .serviceItems article {
+    animation: none;
+  }
+  .impact:not(.impactVisible) .impactGrid > :first-child,
+  .impact:not(.impactVisible) .impactCopy > * {
+    opacity: 1;
+    transform: none;
+  }
+  .impactVisible .impactGrid > :first-child,
+  .impactVisible .impactCopy > * {
     animation: none;
   }
 }
