@@ -647,7 +647,7 @@
 
 @media (max-width: 47.99rem) {
   .story {
-    padding-block: 2.5rem;
+    padding: 2.5rem 0 0.75rem;
   }
 
   .officeVisual {
@@ -663,7 +663,7 @@
   }
 
   :global(.section).purposeSection {
-    padding-block: 1.25rem;
+    padding: 0.75rem 0 1.25rem;
   }
 
   .purposeGrid {

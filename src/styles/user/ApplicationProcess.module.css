@@ -43,6 +43,7 @@
 
 .path {
   position: absolute;
+  z-index: 0;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -71,6 +72,7 @@
 
 .stepList {
   position: absolute;
+  z-index: 1;
   inset: 0;
   margin: 0;
   padding: 0;
@@ -155,13 +157,13 @@
 
 @media (max-width: 47.99rem) {
   .scene {
-    min-height: 155vh;
+    min-height: 140vh;
   }
 
   .panel {
     position: sticky;
-    min-height: 100svh;
-    padding-block: 2.25rem;
+    min-height: calc(100svh - 4.5rem);
+    padding-block: 1.5rem 0.75rem;
   }
 
   .heading {
@@ -174,8 +176,8 @@
   }
 
   .map {
-    height: clamp(20rem, 82vw, 26rem);
-    margin-top: 1.25rem;
+    height: clamp(19rem, 78vw, 23rem);
+    margin-top: 1rem;
   }
 
   .path {
@@ -185,6 +187,7 @@
   .map::before,
   .map::after {
     position: absolute;
+    z-index: 0;
     top: 1rem;
     bottom: 1rem;
     left: 1rem;
@@ -206,6 +209,7 @@
 
   .stepList {
     position: absolute;
+    z-index: 1;
     inset: 0;
   }
 

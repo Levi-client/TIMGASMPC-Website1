@@ -27,8 +27,8 @@
 }
 
 .applicationGrid article:nth-child(2) {
-  background: #fbf6e9;
-  border-color: #eadfbe;
+  background: #eef6f1;
+  border-color: #d6e6dc;
 }
 
 .applicationTitle {
@@ -132,6 +132,14 @@
 }
 
 @media (min-width: 48rem) {
+  .applicationHeading {
+    max-width: none;
+  }
+
+  .applicationHeading h2 {
+    white-space: nowrap;
+  }
+
   .applicationGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

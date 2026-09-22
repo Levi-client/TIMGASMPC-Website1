@@ -163,7 +163,9 @@ export function MembershipPage() {
 
       <section id="application" className={pageStyles.applicationSection}>
         <div className="container">
-          <header className={styles.sectionHeading}>
+          <header
+            className={`${styles.sectionHeading} ${pageStyles.applicationHeading}`}
+          >
             <p className="eyebrow">Application center</p>
             <h2>Choose the official application you need.</h2>
             <p>
