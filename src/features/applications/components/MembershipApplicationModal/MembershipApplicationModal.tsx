@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import styles from "@/styles/user/components/applications/MembershipApplicationModal.module.css";
+import styles from "@/styles/user/MembershipApplicationModal.module.css";
 
 type ApplicationModalProps = {
   children: ReactNode;

@@ -42,7 +42,7 @@ import {
 } from "@/features/applications/loanApplicationTypes";
 import type { ShowToast } from "@/features/notifications/toastTypes";
 import { db } from "@/services/firebase/firestore";
-import styles from "@/styles/admin/components/applications/AdminLoanApplicationsManager.module.css";
+import styles from "@/styles/admin/AdminLoanApplicationsManager.module.css";
 
 const pageSize = 10;
 

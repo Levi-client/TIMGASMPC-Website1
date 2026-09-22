@@ -24,8 +24,8 @@ import {
   type LoanStatus,
   type LoanType,
 } from "@/features/applications/loanApplicationTypes";
-import pageStyles from "@/styles/admin/pages/AdminPage.module.css";
-import styles from "@/styles/admin/pages/DashboardPage.module.css";
+import pageStyles from "@/styles/admin/AdminPage.module.css";
+import styles from "@/styles/admin/DashboardPage.module.css";
 
 type ApplicationStatus = LoanStatus;
 

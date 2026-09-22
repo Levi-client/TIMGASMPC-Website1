@@ -6,7 +6,7 @@ import {
   type LoanPaymentMode,
   type LoanType,
 } from "@/features/applications/loanApplicationTypes";
-import styles from "@/styles/shared/applications/OfficialLoanReview.module.css";
+import styles from "@/styles/shared/OfficialLoanReview.module.css";
 
 type ReviewAsset = {
   propertyDescription?: string;

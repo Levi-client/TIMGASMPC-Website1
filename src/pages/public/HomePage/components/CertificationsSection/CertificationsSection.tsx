@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import { fetchPublishedPosts } from "@/features/posts/publicPosts";
 import { formatPostDate, type PublishedPost } from "@/features/posts/postTypes";
-import styles from "@/styles/user/components/home/CertificationsSection.module.css";
+import styles from "@/styles/user/CertificationsSection.module.css";
 
 export function CertificationsSection() {
   const [certifications, setCertifications] = useState<PublishedPost[]>([]);

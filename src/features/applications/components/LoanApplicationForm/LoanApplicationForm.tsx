@@ -30,8 +30,8 @@ import {
 } from "@/features/applications/loanApplicationTypes";
 import { db } from "@/services/firebase/firestore";
 import { submitApplicationWithCaptcha } from "@/services/applications/applicationSubmission";
-import { OfficialLoanReview } from "@/components/shared/applications/OfficialLoanReview/OfficialLoanReview";
-import styles from "@/styles/user/components/applications/LoanApplicationForm.module.css";
+import { OfficialLoanReview } from "@/features/applications/components/reviews/OfficialLoanReview/OfficialLoanReview";
+import styles from "@/styles/user/LoanApplicationForm.module.css";
 
 const agreementVersion = "Loan-Application-Form";
 const maximumAssets = 6;

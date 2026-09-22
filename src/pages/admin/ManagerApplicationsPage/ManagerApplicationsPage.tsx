@@ -1,12 +1,12 @@
 import { useOutletContext, useSearchParams } from "react-router-dom";
-import { AdminApplicationsManager } from "@/components/admin/applications/AdminApplicationsManager/AdminApplicationsManager";
-import { AdminLoanApplicationsManager } from "@/components/admin/applications/AdminLoanApplicationsManager/AdminLoanApplicationsManager";
-import type { ManagerOutletContext } from "@/components/admin/layout/ManagerLayout/ManagerLayout";
-import pageStyles from "@/styles/admin/pages/AdminPage.module.css";
-import styles from "@/styles/admin/pages/ManagerApplicationsPage.module.css";
+import { AdminApplicationsManager } from "@/features/applications/components/AdminApplicationsManager/AdminApplicationsManager";
+import { AdminLoanApplicationsManager } from "@/features/applications/components/AdminLoanApplicationsManager/AdminLoanApplicationsManager";
+import type { AdminOutletContext } from "@/layouts/AdminLayout/AdminLayout";
+import pageStyles from "@/styles/admin/AdminPage.module.css";
+import styles from "@/styles/admin/ManagerApplicationsPage.module.css";
 
 export function ManagerApplicationsPage() {
-  const { showToast } = useOutletContext<ManagerOutletContext>();
+  const { showToast } = useOutletContext<AdminOutletContext>();
   const [searchParams, setSearchParams] = useSearchParams();
   const applicationType =
     searchParams.get("type") === "loan" ? "loan" : "membership";

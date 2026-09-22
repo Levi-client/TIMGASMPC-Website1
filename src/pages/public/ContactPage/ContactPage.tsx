@@ -7,7 +7,7 @@ import office1440Avif from "@/assets/images/office/optimized/office-1440.avif";
 import office640Webp from "@/assets/images/office/optimized/office-640.webp";
 import office960Webp from "@/assets/images/office/optimized/office-960.webp";
 import office1440Webp from "@/assets/images/office/optimized/office-1440.webp";
-import styles from "@/styles/user/pages/ContentPage.module.css";
+import styles from "@/styles/user/ContentPage.module.css";
 
 export function ContactPage() {
   return (

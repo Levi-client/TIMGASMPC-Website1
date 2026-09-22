@@ -1,4 +1,4 @@
-import styles from "@/styles/shared/components/PageHeader.module.css";
+import styles from "@/styles/shared/PageHeader.module.css";
 type PageHeaderProps = {
   eyebrow: string;
   title: string;

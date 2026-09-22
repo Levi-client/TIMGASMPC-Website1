@@ -22,7 +22,7 @@ import loginBackground from "@/assets/images/office/timgas-office-facade.jpg";
 import timgasLogo from "@/assets/images/brand/timgas-logo.png";
 import { Button } from "@/components/shared/Button/Button";
 import { auth } from "@/services/firebase/firebase";
-import styles from "@/styles/admin/pages/LoginPage.module.css";
+import styles from "@/styles/admin/LoginPage.module.css";
 
 const schema = z.object({
   email: z.string().email("Enter a valid email"),

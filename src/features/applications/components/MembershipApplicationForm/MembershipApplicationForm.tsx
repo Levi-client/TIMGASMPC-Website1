@@ -25,8 +25,8 @@ import {
 } from "@/features/applications/boholLocations";
 import { db } from "@/services/firebase/firestore";
 import { submitApplicationWithCaptcha } from "@/services/applications/applicationSubmission";
-import { OfficialMembershipReview } from "@/components/shared/applications/OfficialMembershipReview/OfficialMembershipReview";
-import styles from "@/styles/user/components/applications/MembershipApplicationForm.module.css";
+import { OfficialMembershipReview } from "@/features/applications/components/reviews/OfficialMembershipReview/OfficialMembershipReview";
+import styles from "@/styles/user/MembershipApplicationForm.module.css";
 
 const agreementVersion = "Membership-Application-Form-Revised-2023";
 const maximumDependents = 8;

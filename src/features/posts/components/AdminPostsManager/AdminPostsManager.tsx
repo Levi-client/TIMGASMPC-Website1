@@ -31,7 +31,7 @@ import {
   type PostCategory,
   type PublishedPost,
 } from "@/features/posts/postTypes";
-import styles from "@/styles/admin/components/posts/AdminPostsManager.module.css";
+import styles from "@/styles/admin/AdminPostsManager.module.css";
 
 const maximumImageSize = 5 * 1024 * 1024;
 const acceptedImageTypes = ["image/jpeg", "image/png", "image/webp"];

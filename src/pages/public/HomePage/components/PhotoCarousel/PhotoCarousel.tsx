@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, type KeyboardEvent } from "react";
-import styles from "@/styles/user/components/home/PhotoCarousel.module.css";
+import styles from "@/styles/user/PhotoCarousel.module.css";
 
 export type CarouselPhoto = {
   src: string;

@@ -1,4 +1,4 @@
-import styles from "@/styles/shared/components/BrandMark.module.css";
+import styles from "@/styles/shared/BrandMark.module.css";
 
 const logo = "/timgas-logo-256.webp";
 

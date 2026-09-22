@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import styles from "@/styles/shared/components/Button.module.css";
+import styles from "@/styles/shared/Button.module.css";
 
 type CommonProps = {
   children: ReactNode;

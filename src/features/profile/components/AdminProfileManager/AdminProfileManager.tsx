@@ -29,16 +29,16 @@ import { auth } from "@/services/firebase/firebase";
 import { db } from "@/services/firebase/firestore";
 import { deleteStorageFile, storage } from "@/services/firebase/storage";
 import type { ShowToast } from "@/features/notifications/toastTypes";
-import styles from "@/styles/admin/components/profile/AdminProfileManager.module.css";
+import styles from "@/styles/admin/AdminProfileManager.module.css";
 
-export type ManagerIdentity = {
+export type AdminIdentity = {
   fullName: string;
   position: string;
   avatarUrl: string;
 };
 
 type AdminProfileManagerProps = {
-  onProfileChange: (profile: ManagerIdentity) => void;
+  onProfileChange: (profile: AdminIdentity) => void;
   showToast: ShowToast;
 };
 

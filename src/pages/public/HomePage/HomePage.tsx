@@ -13,7 +13,7 @@ import { Button } from "@/components/shared/Button/Button";
 import {
   PhotoCarousel,
   type CarouselPhoto,
-} from "@/components/user/home/PhotoCarousel/PhotoCarousel";
+} from "@/pages/public/HomePage/components/PhotoCarousel/PhotoCarousel";
 import officeImage from "@/assets/images/website/Hero.png";
 import hero640Avif from "@/assets/images/website/optimized/hero-640.avif";
 import hero960Avif from "@/assets/images/website/optimized/hero-960.avif";
@@ -43,12 +43,12 @@ import frontView640Webp from "@/assets/images/website/optimized/front-view-640.w
 import frontView960Webp from "@/assets/images/website/optimized/front-view-960.webp";
 import frontView1440Webp from "@/assets/images/website/optimized/front-view-1440.webp";
 import { principles } from "@/data/content";
-import { AboutPage } from "@/pages/user/AboutPage/AboutPage";
-import { ContactPage } from "@/pages/user/ContactPage/ContactPage";
-import { CertificationsSection } from "@/components/user/home/CertificationsSection/CertificationsSection";
-import { MembershipPage } from "@/pages/user/MembershipPage/MembershipPage";
-import { NewsPage } from "@/pages/user/NewsPage/NewsPage";
-import styles from "@/styles/user/pages/HomePage.module.css";
+import { AboutPage } from "@/pages/public/AboutPage/AboutPage";
+import { ContactPage } from "@/pages/public/ContactPage/ContactPage";
+import { CertificationsSection } from "@/pages/public/HomePage/components/CertificationsSection/CertificationsSection";
+import { MembershipPage } from "@/pages/public/MembershipPage/MembershipPage";
+import { NewsPage } from "@/pages/public/NewsPage/NewsPage";
+import styles from "@/styles/user/HomePage.module.css";
 
 const officePhotos: CarouselPhoto[] = [
   {

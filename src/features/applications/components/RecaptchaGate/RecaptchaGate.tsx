@@ -1,7 +1,7 @@
 import { ShieldCheck, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import styles from "@/styles/user/components/security/RecaptchaGate.module.css";
+import styles from "@/styles/user/RecaptchaGate.module.css";
 
 type RecaptchaApi = {
   render: (

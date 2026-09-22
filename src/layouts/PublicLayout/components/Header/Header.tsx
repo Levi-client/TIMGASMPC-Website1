@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { BrandMark } from "@/components/shared/BrandMark/BrandMark";
 import { Button } from "@/components/shared/Button/Button";
-import styles from "@/styles/user/components/layout/Header.module.css";
+import styles from "@/styles/user/Header.module.css";
 
 const navItems = [
   ["#home", "Home"],

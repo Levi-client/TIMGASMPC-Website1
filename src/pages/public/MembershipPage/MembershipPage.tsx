@@ -6,12 +6,12 @@ import {
   UsersRound,
 } from "lucide-react";
 import { lazy, Suspense, useCallback, useRef, useState } from "react";
-import { ApplicationModal } from "@/components/user/applications/MembershipApplicationModal/MembershipApplicationModal";
-import { ApplicationProcess } from "@/components/user/applications/ApplicationProcess/ApplicationProcess";
+import { ApplicationModal } from "@/features/applications/components/MembershipApplicationModal/MembershipApplicationModal";
+import { ApplicationProcess } from "@/features/applications/components/ApplicationProcess/ApplicationProcess";
 import { Button } from "@/components/shared/Button/Button";
 import { PageHeader } from "@/components/shared/PageHeader/PageHeader";
-import styles from "@/styles/user/pages/ContentPage.module.css";
-import pageStyles from "@/styles/user/pages/MembershipPage.module.css";
+import styles from "@/styles/user/ContentPage.module.css";
+import pageStyles from "@/styles/user/MembershipPage.module.css";
 
 const verificationSteps = [
   "Ask the TIMGAS office to confirm current membership eligibility.",
@@ -32,14 +32,14 @@ const maximumCachedCaptchaAge = 90_000;
 
 const loadMembershipApplicationForm = () =>
   import(
-    "@/components/user/applications/MembershipApplicationForm/MembershipApplicationForm"
+    "@/features/applications/components/MembershipApplicationForm/MembershipApplicationForm"
   );
 const loadLoanApplicationForm = () =>
   import(
-    "@/components/user/applications/LoanApplicationForm/LoanApplicationForm"
+    "@/features/applications/components/LoanApplicationForm/LoanApplicationForm"
   );
 const loadRecaptchaGate = () =>
-  import("@/components/user/security/RecaptchaGate/RecaptchaGate");
+  import("@/features/applications/components/RecaptchaGate/RecaptchaGate");
 
 const MembershipApplicationForm = lazy(() =>
   loadMembershipApplicationForm().then((module) => ({

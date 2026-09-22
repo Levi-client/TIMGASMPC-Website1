@@ -1,5 +1,5 @@
 import type { MembershipType } from "@/features/applications/applicationTypes";
-import styles from "@/styles/shared/applications/OfficialMembershipReview.module.css";
+import styles from "@/styles/shared/OfficialMembershipReview.module.css";
 
 export type OfficialMembershipReviewData = {
   reference: string;

@@ -36,8 +36,8 @@ import {
 } from "@/features/applications/applicationDocumentExport";
 import type { ShowToast } from "@/features/notifications/toastTypes";
 import { db } from "@/services/firebase/firestore";
-import { OfficialMembershipReview } from "@/components/shared/applications/OfficialMembershipReview/OfficialMembershipReview";
-import styles from "@/styles/admin/components/applications/AdminApplicationsManager.module.css";
+import { OfficialMembershipReview } from "@/features/applications/components/reviews/OfficialMembershipReview/OfficialMembershipReview";
+import styles from "@/styles/admin/AdminApplicationsManager.module.css";
 
 const pageSize = 10;
 

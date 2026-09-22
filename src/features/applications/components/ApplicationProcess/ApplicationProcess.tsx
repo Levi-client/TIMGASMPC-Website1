@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import styles from "@/styles/user/components/applications/ApplicationProcess.module.css";
+import styles from "@/styles/user/ApplicationProcess.module.css";
 
 type ApplicationProcessProps = {
   eyebrow: string;

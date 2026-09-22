@@ -1,11 +1,11 @@
 import { useOutletContext } from "react-router-dom";
-import { AdminProfileManager } from "@/components/admin/profile/AdminProfileManager/AdminProfileManager";
-import type { ManagerOutletContext } from "@/components/admin/layout/ManagerLayout/ManagerLayout";
-import styles from "@/styles/admin/pages/AdminPage.module.css";
+import { AdminProfileManager } from "@/features/profile/components/AdminProfileManager/AdminProfileManager";
+import type { AdminOutletContext } from "@/layouts/AdminLayout/AdminLayout";
+import styles from "@/styles/admin/AdminPage.module.css";
 
 export function ManagerProfilePage() {
   const { onProfileChange, showToast } =
-    useOutletContext<ManagerOutletContext>();
+    useOutletContext<AdminOutletContext>();
 
   return (
     <div className={styles.content}>

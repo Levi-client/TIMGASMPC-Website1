@@ -26,7 +26,7 @@ import {
   type PostCategory,
   type PublishedPost,
 } from "@/features/posts/postTypes";
-import styles from "@/styles/user/pages/ContentPage.module.css";
+import styles from "@/styles/user/ContentPage.module.css";
 
 type NewsCategory = Exclude<PostCategory, "certification">;
 

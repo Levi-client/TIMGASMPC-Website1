@@ -13,7 +13,7 @@ import missionStatsImage from "@/assets/images/website/timgas-mission-stats.webp
 import visionStatsImage from "@/assets/images/website/timgas-vision-stats.webp";
 import { Button } from "@/components/shared/Button/Button";
 import { coreValues, objectives, socialGoals } from "@/data/content";
-import styles from "@/styles/user/pages/AboutPage.module.css";
+import styles from "@/styles/user/AboutPage.module.css";
 
 const cooperativeName =
   "Tinabangay sa Igsoong Mag-uuma Gasa ni San Isidro Multi-Purpose Cooperative";

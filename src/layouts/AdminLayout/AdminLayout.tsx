@@ -19,14 +19,14 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { BrandMark } from "@/components/shared/BrandMark/BrandMark";
-import type { ManagerIdentity } from "@/components/admin/profile/AdminProfileManager/AdminProfileManager";
+import type { AdminIdentity } from "@/features/profile/components/AdminProfileManager/AdminProfileManager";
 import type { ShowToast, ToastTone } from "@/features/notifications/toastTypes";
 import { auth } from "@/services/firebase/firebase";
 import { db } from "@/services/firebase/firestore";
-import styles from "@/styles/admin/components/layout/ManagerLayout.module.css";
+import styles from "@/styles/admin/AdminLayout.module.css";
 
-export type ManagerOutletContext = {
-  onProfileChange: (profile: ManagerIdentity) => void;
+export type AdminOutletContext = {
+  onProfileChange: (profile: AdminIdentity) => void;
   showToast: ShowToast;
 };
 
@@ -46,7 +46,7 @@ function initialsForName(name: string) {
     .toUpperCase();
 }
 
-export function ManagerLayout() {
+export function AdminLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const managerEmail = auth?.currentUser?.email ?? "Manager";
@@ -58,7 +58,7 @@ export function ManagerLayout() {
     () => window.matchMedia("(min-width: 64rem)").matches,
   );
   const [currentHour, setCurrentHour] = useState(() => new Date().getHours());
-  const [managerIdentity, setManagerIdentity] = useState<ManagerIdentity>({
+  const [managerIdentity, setAdminIdentity] = useState<AdminIdentity>({
     fullName: auth?.currentUser?.displayName ?? managerEmail.split("@")[0],
     position: "Administrator",
     avatarUrl: auth?.currentUser?.photoURL ?? "",
@@ -70,7 +70,7 @@ export function ManagerLayout() {
   } | null>(null);
   const toastTimerRef = useRef<number | null>(null);
   const handleProfileChange = useCallback(
-    (profile: ManagerIdentity) => setManagerIdentity(profile),
+    (profile: AdminIdentity) => setAdminIdentity(profile),
     [],
   );
   const showToast = useCallback<ShowToast>((message, tone = "success") => {
@@ -122,7 +122,7 @@ export function ManagerLayout() {
       .then((snapshot) => {
         if (!active) return;
         const data = snapshot.data();
-        setManagerIdentity({
+        setAdminIdentity({
           fullName:
             typeof data?.fullName === "string" && data.fullName.trim()
               ? data.fullName
@@ -337,7 +337,7 @@ export function ManagerLayout() {
             {
               onProfileChange: handleProfileChange,
               showToast,
-            } satisfies ManagerOutletContext
+            } satisfies AdminOutletContext
           }
         />
       </main>

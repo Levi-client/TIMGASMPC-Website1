@@ -1,7 +1,7 @@
 import { Globe2, Mail, MapPin, Phone } from "lucide-react";
 import officeCutout from "@/assets/images/office/timgas-office-footer-cutout.webp";
 import { BrandMark } from "@/components/shared/BrandMark/BrandMark";
-import styles from "@/styles/user/components/layout/Footer.module.css";
+import styles from "@/styles/user/Footer.module.css";
 
 export function Footer() {
   return (
