@@ -123,33 +123,79 @@
 
 .emptyNews {
   display: grid;
-  gap: 1.25rem;
-  align-items: start;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-gold-500);
+  overflow: hidden;
+  background: #fbfdfb;
+  border: 1px solid #c9ddd1;
+  border-radius: 0.5rem;
   box-shadow: var(--shadow-sm);
 }
 
-.emptyNews > svg {
-  box-sizing: content-box;
-  padding: 0.7rem;
-  color: var(--color-brand-800);
-  background: white;
-  border-radius: 50%;
+.emptyNewsMain {
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.emptyNewsCopy {
+  min-width: 0;
 }
 
 .emptyNews h2 {
-  max-width: 38rem;
-  margin-bottom: 0.65rem;
+  max-width: 44rem;
+  margin: 0 0 0.7rem;
   font-size: clamp(1.45rem, 3vw, 2rem);
 }
 
-.emptyNews p:not(.eyebrow) {
+.emptyNewsCopy > p:last-of-type {
   max-width: 42rem;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 0.9rem;
+}
+
+.emptyNewsContact {
+  display: grid;
+  align-content: center;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  background: #eef6f1;
+  border-top: 1px solid #c9ddd1;
+}
+
+.emptyNewsContact h3 {
+  margin: 0;
+  color: var(--color-brand-950);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.emptyNewsContact p {
+  max-width: 25rem;
+  margin: 0.65rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.emptyNewsFooter {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.8rem clamp(1.5rem, 4vw, 2.75rem);
+  background: #f4f8f5;
+  border-top: 1px solid #c9ddd1;
+}
+
+.emptyNewsFooter > svg {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-brand-700);
+  stroke-width: 2;
+}
+
+.emptyNewsFooter p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
 }
 
 .newsLoading {
@@ -588,15 +634,6 @@
   box-shadow: 0 1rem 2.6rem rgb(10 51 36 / 10%);
 }
 
-.officePhoto::after {
-  position: absolute;
-  inset: auto 0 0;
-  height: 32%;
-  pointer-events: none;
-  background: linear-gradient(0deg, rgb(4 31 22 / 28%), transparent);
-  content: "";
-}
-
 .officePhoto > picture {
   display: block;
   width: 100%;
@@ -610,73 +647,6 @@
   min-height: inherit;
   object-fit: cover;
   object-position: center;
-}
-
-.officePhoto figcaption {
-  position: absolute;
-  z-index: 1;
-  right: auto;
-  bottom: clamp(0.75rem, 2vw, 1.1rem);
-  left: clamp(0.75rem, 2vw, 1.1rem);
-  display: flex;
-  width: min(calc(100% - 1.5rem), 20rem);
-  gap: 0.6rem;
-  align-items: center;
-  padding: 0.55rem 0.65rem;
-  color: white;
-  background: rgb(7 49 35 / 84%);
-  border: 1px solid rgb(255 255 255 / 18%);
-  border-radius: 0.65rem;
-  box-shadow: 0 0.65rem 1.6rem rgb(1 26 17 / 24%);
-  backdrop-filter: blur(16px) saturate(125%);
-}
-
-.locationIcon {
-  display: grid;
-  width: 1.9rem;
-  height: 1.9rem;
-  flex: 0 0 auto;
-  place-items: center;
-  color: var(--color-gold-500);
-  background: rgb(255 255 255 / 10%);
-  border: 1px solid rgb(255 255 255 / 15%);
-  border-radius: 50%;
-}
-
-.locationIcon svg {
-  width: 0.85rem;
-  height: 0.85rem;
-  stroke-width: 2.2;
-}
-
-.officePhoto figcaption > div {
-  min-width: 0;
-}
-
-.officePhoto figcaption small {
-  display: block;
-  margin-bottom: 0.08rem;
-  color: #e3bd5b;
-  font-size: 0.48rem;
-  font-weight: 800;
-  letter-spacing: 0.11em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.officePhoto figcaption h2 {
-  margin: 0 0 0.12rem;
-  color: white;
-  font-family: var(--font-sans);
-  font-size: clamp(0.7rem, 1.3vw, 0.8rem);
-  line-height: 1.25;
-}
-
-.officePhoto figcaption p {
-  margin: 0;
-  color: #d7e4de;
-  font-size: clamp(0.56rem, 1.1vw, 0.63rem);
-  line-height: 1.35;
 }
 
 .mapWrap {
@@ -711,6 +681,12 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .officePhoto {
+    height: clamp(18rem, 24vw, 21rem);
+    min-height: 0;
+    align-self: start;
+  }
+
   .infoGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -720,7 +696,12 @@
   }
 
   .emptyNews {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1.8fr) minmax(17rem, 0.9fr);
+  }
+
+  .emptyNewsContact {
+    border-top: 0;
+    border-left: 1px solid #c9ddd1;
   }
 
   .mapWrap {

@@ -76,16 +76,6 @@ export function ContactPage() {
                 decoding="async"
               />
             </picture>
-            <figcaption>
-              <span className={styles.locationIcon}>
-                <MapPin size={18} aria-hidden="true" />
-              </span>
-              <div>
-                <small>Office location</small>
-                <h2>TIMGAS Cooperative Office</h2>
-                <p>Purok 5, Poblacion, Trinidad, Bohol</p>
-              </div>
-            </figcaption>
           </figure>
 
           <div className={styles.mapWrap}>

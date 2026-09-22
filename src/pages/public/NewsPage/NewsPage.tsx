@@ -5,6 +5,7 @@ import {
   CalendarDays,
   ChevronDown,
   ChevronUp,
+  Info,
   Mail,
   Newspaper,
   Phone,
@@ -18,7 +19,6 @@ import {
   type PointerEvent as ReactPointerEvent,
   type UIEvent,
 } from "react";
-import { Button } from "@/components/shared/Button/Button";
 import { PageHeader } from "@/components/shared/PageHeader/PageHeader";
 import { fetchPublishedPosts } from "@/features/posts/publicPosts";
 import {
@@ -450,28 +450,39 @@ export function NewsPage() {
             </div>
           ) : (
             <div className={styles.emptyNews}>
-              <div>
-                <p className="eyebrow">Current status</p>
-                <h2>
-                  {loadFailed
-                    ? "Official updates are temporarily unavailable."
-                    : "No official announcement has been posted yet."}
-                </h2>
-                <p>
-                  For current advisories, schedules, program availability, and
-                  member notices, contact or visit the TIMGAS MPC office
-                  directly.
-                </p>
-                <div className={styles.contactLinks}>
-                  <a href="tel:+639382242376">
-                    <Phone size={17} /> +63 938 224 2376
-                  </a>
-                  <a href="mailto:timgascooperative@gmail.com">
-                    <Mail size={17} /> timgascooperative@gmail.com
-                  </a>
+              <div className={styles.emptyNewsMain}>
+                <div className={styles.emptyNewsCopy}>
+                  <p className="eyebrow">Current status</p>
+                  <h2>
+                    {loadFailed
+                      ? "Official updates are temporarily unavailable."
+                      : "No official announcement has been posted yet."}
+                  </h2>
+                  <p>
+                    For current advisories, schedules, program availability,
+                    and member notices, contact or visit the TIMGAS MPC office
+                    directly.
+                  </p>
+                  <div className={styles.contactLinks}>
+                    <a href="tel:+639382242376">
+                      <Phone size={17} /> +63 938 224 2376
+                    </a>
+                    <a href="mailto:timgascooperative@gmail.com">
+                      <Mail size={17} /> timgascooperative@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
-              <Button to="/#contact">View contact details</Button>
+              <aside className={styles.emptyNewsContact}>
+                <h3>Stay connected with the office</h3>
+                <p>
+                  Contact the cooperative for the latest verified information.
+                </p>
+              </aside>
+              <div className={styles.emptyNewsFooter}>
+                <Info aria-hidden="true" />
+                <p>Official updates will appear here when published.</p>
+              </div>
             </div>
           )}
         </div>
