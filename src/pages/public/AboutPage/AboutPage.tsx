@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  BadgeCheck,
-  Gem,
+  BookOpen,
   HandHeart,
+  Handshake,
+  Leaf,
   ShieldCheck,
   Sprout,
-  Target,
+  Star,
   Users,
 } from "lucide-react";
 import officeImage from "@/assets/images/website/optimized/front-view-960.webp";
 import missionStatsImage from "@/assets/images/website/timgas-mission-stats.webp";
 import visionStatsImage from "@/assets/images/website/timgas-vision-stats.webp";
 import { Button } from "@/components/shared/Button/Button";
-import { coreValues, objectives, socialGoals } from "@/data/content";
+import { objectives, socialGoals } from "@/data/content";
 import styles from "@/styles/user/AboutPage.module.css";
 
 const cooperativeName =
@@ -28,6 +29,39 @@ const objectiveLabels = [
 ];
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
+
+const coreValueDetails = [
+  {
+    title: "Trustworthy",
+    description: "We are honest, transparent, and reliable in all we do.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Integrity",
+    description: "We uphold the highest standards of ethics and accountability.",
+    icon: Users,
+  },
+  {
+    title: "Model cooperative",
+    description: "We practice the true spirit of cooperation and mutual support.",
+    icon: Handshake,
+  },
+  {
+    title: "God-fearing",
+    description: "We put our faith in God as our source of strength and guidance.",
+    icon: Leaf,
+  },
+  {
+    title: "Articulate",
+    description: "We communicate openly and responsibly for a shared purpose.",
+    icon: Sprout,
+  },
+  {
+    title: "Sincerity",
+    description: "We serve with genuine care, commitment, and a sincere heart.",
+    icon: Star,
+  },
+];
 
 export function AboutPage() {
   const purposeSectionRef = useRef<HTMLElement>(null);
@@ -73,17 +107,26 @@ export function AboutPage() {
               Purok 5, Poblacion, Trinidad, Bohol, with the goal of improving
               their economic well-being through quality products and services.
             </p>
-            <ul className={styles.trustSignals} aria-label="Cooperative strengths">
+            <ul
+              className={styles.trustSignals}
+              aria-label="Cooperative strengths"
+            >
               <li>
-                <span><ShieldCheck aria-hidden="true" /></span>
+                <span>
+                  <ShieldCheck aria-hidden="true" />
+                </span>
                 Member focused
               </li>
               <li>
-                <span><HandHeart aria-hidden="true" /></span>
+                <span>
+                  <HandHeart aria-hidden="true" />
+                </span>
                 Reliable services
               </li>
               <li>
-                <span><Users aria-hidden="true" /></span>
+                <span>
+                  <Users aria-hidden="true" />
+                </span>
                 Community driven
               </li>
             </ul>
@@ -123,67 +166,63 @@ export function AboutPage() {
       >
         <div className="container">
           <div className={styles.purposeGrid}>
-          <article className={styles.purposeCard}>
-            <div className={styles.purposeContent}>
-              <span className={styles.purposeIcon}><Target aria-hidden="true" /></span>
-              <p className="eyebrow">Our mission</p>
-              <h2>Uplift every member’s economic status.</h2>
-              <p>
-                To uplift the economic status of every member by providing quality
-                products and services.
-              </p>
-              <ul className={styles.purposeStats} aria-label="Mission priorities">
-                <li><BadgeCheck aria-hidden="true" /><span>Quality products</span></li>
-                <li><ShieldCheck aria-hidden="true" /><span>Reliable services</span></li>
-                <li><Sprout aria-hidden="true" /><span>Member growth</span></li>
-              </ul>
-            </div>
-            <img
-              className={styles.purposeImage}
-              src={missionStatsImage}
-              alt="Productive green fields at sunrise"
-              loading="lazy"
-            />
-          </article>
-          <article className={styles.purposeCard}>
-            <div className={styles.purposeContent}>
-              <span className={styles.purposeIcon}><Sprout aria-hidden="true" /></span>
-              <p className="eyebrow">Our vision</p>
-              <h2>A strong and trusted cooperative.</h2>
-              <p>
-                A strong and trusted cooperative where members are progressive
-                with pride and dignity.
-              </p>
-              <ul className={styles.purposeStats} aria-label="Vision priorities">
-                <li><Users aria-hidden="true" /><span>Progressive members</span></li>
-                <li><ShieldCheck aria-hidden="true" /><span>Trusted cooperative</span></li>
-                <li><Gem aria-hidden="true" /><span>Pride &amp; dignity</span></li>
-              </ul>
-            </div>
-            <img
-              className={styles.purposeImage}
-              src={visionStatsImage}
-              alt="Fresh green leaves growing in a field"
-              loading="lazy"
-            />
-          </article>
+            <article className={styles.purposeCard}>
+              <div className={styles.purposeContent}>
+                <p className="eyebrow">Our mission</p>
+                <h2>Uplift every member’s economic status.</h2>
+                <p>
+                  To uplift the economic status of every member by providing
+                  quality products and services.
+                </p>
+              </div>
+              <img
+                className={styles.purposeImage}
+                src={missionStatsImage}
+                alt="Productive green fields at sunrise"
+                loading="lazy"
+              />
+            </article>
+            <article className={styles.purposeCard}>
+              <div className={styles.purposeContent}>
+                <p className="eyebrow">Our vision</p>
+                <h2>A strong and trusted cooperative.</h2>
+                <p>
+                  A strong and trusted cooperative where members are progressive
+                  with pride and dignity.
+                </p>
+              </div>
+              <img
+                className={styles.purposeImage}
+                src={visionStatsImage}
+                alt="Fresh green leaves growing in a field"
+                loading="lazy"
+              />
+            </article>
           </div>
-        </div>
-      </section>
 
-      <section className={`section ${styles.coreValuesSection}`}>
-        <div className="container">
-          <header className={styles.sectionHeading}>
-            <p className="eyebrow">Our core values</p>
-            <h2>The values behind TIMGAS.</h2>
-          </header>
-          <div className={styles.valueGrid}>
-            {coreValues.map(([letter, value]) => (
-              <article key={letter}>
-                <strong>{letter}</strong>
-                <span>{value}</span>
-              </article>
-            ))}
+          <div className={styles.coreValues}>
+            <header className={styles.coreValuesHeading}>
+              <p className="eyebrow">Our core values</p>
+              <h2>
+                <span>The values behind</span>{" "}
+                <span>TIMGAS.</span>
+              </h2>
+              <p>
+                Our core values guide our actions and keep us focused on what
+                truly matters: our members, our community, and a better tomorrow.
+              </p>
+            </header>
+            <div className={styles.valueGrid}>
+              {coreValueDetails.map(({ title, description, icon: Icon }) => (
+                <article key={title}>
+                  <span className={styles.valueIcon}>
+                    <Icon aria-hidden="true" />
+                  </span>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -213,17 +252,36 @@ export function AboutPage() {
       </section>
 
       <section className={`section ${styles.socialGoalsSection}`}>
-        <div className="container">
-          <header className={styles.sectionHeading}>
-            <p className="eyebrow">Our social goals</p>
-            <h2>Working toward sustainable rural development.</h2>
-          </header>
-          <div className={styles.socialGrid}>
-            {socialGoals.map((goal) => (
-              <article key={goal}>
-                <p>{goal}</p>
+        <div className={`container ${styles.socialPanel}`}>
+          <div className={styles.socialContent}>
+            <header className={styles.socialIntro}>
+              <p className="eyebrow">Our social goals</p>
+              <h2>Working toward sustainable rural development.</h2>
+              <p>
+                Practical goals that strengthen the cooperative, equip its
+                people, and support resilient rural communities.
+              </p>
+            </header>
+            <div className={styles.socialGoals}>
+              <article>
+                <span className={styles.socialIcon}>
+                  <Users aria-hidden="true" />
+                </span>
+                <div>
+                  <h3>A viable, empowered cooperative</h3>
+                  <p>{socialGoals[0]}</p>
+                </div>
               </article>
-            ))}
+              <article>
+                <span className={styles.socialIcon}>
+                  <BookOpen aria-hidden="true" />
+                </span>
+                <div>
+                  <h3>Training that builds lasting capacity</h3>
+                  <p>{socialGoals[1]}</p>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>

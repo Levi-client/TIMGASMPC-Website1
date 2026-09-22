@@ -359,8 +359,9 @@
 }
 .impactGrid {
   display: grid;
-  gap: clamp(2.5rem, 6vw, 5.5rem);
+  gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
+  margin-bottom: -15px;
 }
 .impactCopy h2 {
   max-width: 35rem;

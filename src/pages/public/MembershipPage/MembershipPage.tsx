@@ -31,13 +31,9 @@ type PendingCaptcha = {
 const maximumCachedCaptchaAge = 90_000;
 
 const loadMembershipApplicationForm = () =>
-  import(
-    "@/features/applications/components/MembershipApplicationForm/MembershipApplicationForm"
-  );
+  import("@/features/applications/components/MembershipApplicationForm/MembershipApplicationForm");
 const loadLoanApplicationForm = () =>
-  import(
-    "@/features/applications/components/LoanApplicationForm/LoanApplicationForm"
-  );
+  import("@/features/applications/components/LoanApplicationForm/LoanApplicationForm");
 const loadRecaptchaGate = () =>
   import("@/features/applications/components/RecaptchaGate/RecaptchaGate");
 
@@ -60,10 +56,12 @@ export function MembershipPage() {
   const [onlineFormLoaded, setOnlineFormLoaded] = useState(false);
   const [showLoanForm, setShowLoanForm] = useState(false);
   const [loanFormLoaded, setLoanFormLoaded] = useState(false);
-  const [captchaTarget, setCaptchaTarget] = useState<ApplicationTarget | null>(null);
-  const [captchaPurpose, setCaptchaPurpose] = useState<"opening" | "submitting">(
-    "opening",
+  const [captchaTarget, setCaptchaTarget] = useState<ApplicationTarget | null>(
+    null,
   );
+  const [captchaPurpose, setCaptchaPurpose] = useState<
+    "opening" | "submitting"
+  >("opening");
   const [captchaCredentials, setCaptchaCredentials] = useState<
     Partial<Record<ApplicationTarget, CaptchaCredential>>
   >({});
@@ -87,32 +85,37 @@ export function MembershipPage() {
     setCaptchaTarget(target);
   };
 
-  const completeCaptcha = useCallback((token: string) => {
-    if (!captchaTarget || !token) return;
-    const target = captchaTarget;
-    setCaptchaTarget(null);
+  const completeCaptcha = useCallback(
+    (token: string) => {
+      if (!captchaTarget || !token) return;
+      const target = captchaTarget;
+      setCaptchaTarget(null);
 
-    const pendingCaptcha = pendingCaptchaRef.current;
-    if (pendingCaptcha?.target === target) {
-      pendingCaptchaRef.current = null;
-      pendingCaptcha.resolve(token);
-      return;
-    }
+      const pendingCaptcha = pendingCaptchaRef.current;
+      if (pendingCaptcha?.target === target) {
+        pendingCaptchaRef.current = null;
+        pendingCaptcha.resolve(token);
+        return;
+      }
 
-    setCaptchaCredentials((current) => ({
-      ...current,
-      [target]: { token, verifiedAt: Date.now() },
-    }));
-    if (target === "membership") openOnlineForm();
-    else openLoanForm();
-  }, [captchaTarget]);
+      setCaptchaCredentials((current) => ({
+        ...current,
+        [target]: { token, verifiedAt: Date.now() },
+      }));
+      if (target === "membership") openOnlineForm();
+      else openLoanForm();
+    },
+    [captchaTarget],
+  );
 
   const closeCaptcha = useCallback(() => {
     const pendingCaptcha = pendingCaptchaRef.current;
     if (pendingCaptcha && pendingCaptcha.target === captchaTarget) {
       pendingCaptchaRef.current = null;
       pendingCaptcha.reject(
-        new Error("Security verification was cancelled. Complete it to submit your application."),
+        new Error(
+          "Security verification was cancelled. Complete it to submit your application.",
+        ),
       );
     }
     setCaptchaTarget(null);
@@ -164,8 +167,8 @@ export function MembershipPage() {
             <p className="eyebrow">Application center</p>
             <h2>Choose the official application you need.</h2>
             <p>
-              Complete a form online for manager review or download the
-              original file and submit it according to office instructions.
+              Complete a form online for manager review or download the original
+              file and submit it according to office instructions.
             </p>
           </header>
           <div className={pageStyles.applicationGrid}>
@@ -184,10 +187,17 @@ export function MembershipPage() {
                 </p>
               </div>
               <div className={pageStyles.applicationActions}>
-                <button type="button" onClick={() => requestOpeningCaptcha("membership")}>
-                  <FilePenLine /> {onlineFormLoaded ? "Continue online" : "Apply online"}
+                <button
+                  type="button"
+                  onClick={() => requestOpeningCaptcha("membership")}
+                >
+                  <FilePenLine />{" "}
+                  {onlineFormLoaded ? "Continue online" : "Apply online"}
                 </button>
-                <a href="/downloads/Membership-Application-Form-Revised-2023.docx" download>
+                <a
+                  href="/downloads/Membership-Application-Form-Revised-2023.docx"
+                  download
+                >
                   <FileDown /> Download form
                 </a>
               </div>
@@ -207,8 +217,12 @@ export function MembershipPage() {
                 </p>
               </div>
               <div className={pageStyles.applicationActions}>
-                <button type="button" onClick={() => requestOpeningCaptcha("loan")}>
-                  <FilePenLine /> {loanFormLoaded ? "Continue loan form" : "Apply for a loan"}
+                <button
+                  type="button"
+                  onClick={() => requestOpeningCaptcha("loan")}
+                >
+                  <FilePenLine />{" "}
+                  {loanFormLoaded ? "Continue loan form" : "Apply for a loan"}
                 </button>
                 <a href="/downloads/Loan-Application-Form.xls" download>
                   <FileDown /> Download XLS
@@ -216,7 +230,6 @@ export function MembershipPage() {
               </div>
             </article>
           </div>
-
         </div>
       </section>
 
@@ -277,7 +290,11 @@ export function MembershipPage() {
           }
         >
           <RecaptchaGate
-            applicationName={captchaTarget === "loan" ? "loan application" : "membership application"}
+            applicationName={
+              captchaTarget === "loan"
+                ? "loan application"
+                : "membership application"
+            }
             open
             purpose={captchaPurpose}
             onClose={closeCaptcha}
