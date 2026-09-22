@@ -230,14 +230,26 @@
 }
 
 .postGroupTitle {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   min-width: 0;
-  gap: 0.9rem;
-  align-items: flex-start;
+  column-gap: 0.9rem;
+  align-items: start;
+}
+
+.postGroupTitle > div {
+  display: contents;
+}
+
+.postGroupTitle :global(.eyebrow) {
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .postGroupTitle > span {
   display: grid;
+  grid-column: 1;
+  grid-row: 2;
   flex: 0 0 auto;
   width: 2.6rem;
   height: 2.6rem;
@@ -253,14 +265,19 @@
 }
 
 .postGroupTitle h3 {
-  margin: 0.15rem 0 0.35rem;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  margin: 0;
   font-size: clamp(1.35rem, 3vw, 1.8rem);
   line-height: 1.2;
 }
 
 .postGroupTitle p:last-child {
+  grid-column: 2;
+  grid-row: 3;
   max-width: 42rem;
-  margin: 0;
+  margin: 0.35rem 0 0;
   font-size: clamp(0.8rem, 1.2vw, 0.88rem);
 }
 
