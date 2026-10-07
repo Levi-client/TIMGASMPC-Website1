@@ -4,87 +4,114 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#123f2f" />
-    <meta name="description" content="TIMGAS Multi-Purpose Cooperative — growing stronger livelihoods and communities together." />
+    <meta
+      name="description"
+      content="TIMGAS Multi-Purpose Cooperative — growing stronger livelihoods and communities together."
+    />
     <meta name="author" content="TIMGAS Multi-Purpose Cooperative" />
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="TIMGAS Multi-Purpose Cooperative" />
-    <meta property="og:title" content="TIMGAS Multi-Purpose Cooperative — Your partner in financial growth" />
-    <meta property="og:description" content="A member-owned cooperative in Trinidad, Bohol helping members build secure livelihoods through responsible financial services, farm support, and the power of cooperation." />
+    <meta
+      property="og:title"
+      content="TIMGAS Multi-Purpose Cooperative — Your partner in financial growth"
+    />
+    <meta
+      property="og:description"
+      content="A member-owned cooperative in Trinidad, Bohol helping members build secure livelihoods through responsible financial services, farm support, and the power of cooperation."
+    />
     <meta property="og:image" content="/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TIMGAS Multi-Purpose Cooperative — Your partner in financial growth" />
-    <meta name="twitter:description" content="A member-owned cooperative in Trinidad, Bohol helping members build secure livelihoods through responsible financial services, farm support, and the power of cooperation." />
+    <meta
+      name="twitter:title"
+      content="TIMGAS Multi-Purpose Cooperative — Your partner in financial growth"
+    />
+    <meta
+      name="twitter:description"
+      content="A member-owned cooperative in Trinidad, Bohol helping members build secure livelihoods through responsible financial services, farm support, and the power of cooperation."
+    />
     <meta name="twitter:image" content="/og-image.jpg" />
     <link rel="icon" type="image/png" href="/timgas-favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
     <title>TIMGAS Multi-Purpose Cooperative</title>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "TIMGAS Multi-Purpose Cooperative",
-      "alternateName": "TIMGAS MPC",
-      "description": "Member-owned cooperative in Trinidad, Bohol offering financial services, farm support, remittances, bills payment, and government service assistance.",
-      "foundingDate": "1995-07-25",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Purok 5, Poblacion",
-        "addressLocality": "Trinidad",
-        "addressRegion": "Bohol",
-        "addressCountry": "PH"
-      },
-      "telephone": "+639382242376",
-      "email": "timgascooperative@gmail.com"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TIMGAS Multi-Purpose Cooperative",
+        "alternateName": "TIMGAS MPC",
+        "description": "Member-owned cooperative in Trinidad, Bohol offering financial services, farm support, remittances, bills payment, and government service assistance.",
+        "foundingDate": "1995-07-25",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Purok 5, Poblacion",
+          "addressLocality": "Trinidad",
+          "addressRegion": "Bohol",
+          "addressCountry": "PH"
+        },
+        "telephone": "+639382242376",
+        "email": "timgascooperative@gmail.com"
+      }
     </script>
   </head>
   <body>
-    <!-- Loading screen - displays instantly before React loads -->
-    <div id="loading-screen" style="
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 9999;
-      display: grid;
-      place-items: center;
-      background: #ffffff;
-      opacity: 1;
-    ">
-      <div id="loading-logo" style="
-        position: relative;
-        width: 9rem;
-        height: 9rem;
-        animation: logoSpin 1s ease-in-out;
-      ">
-        <img 
-          src="/timgas-logo-256.webp"
-          alt="TIMGAS MPC" 
-          style="width: 100%; height: 100%; object-fit: contain; display: block;"
-        />
-      </div>
+    <div id="loading-screen" aria-hidden="true">
+      <span class="opening-panel"></span>
+      <span class="opening-panel"></span>
+      <span class="opening-panel"></span>
+      <span class="opening-panel"></span>
     </div>
-    
+
     <style>
-      @keyframes logoSpin {
-        0% {
-          transform: rotate(0deg);
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          transform: rotate(360deg);
-          opacity: 1;
+      #loading-screen {
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .opening-panel {
+        background: #123f2f;
+        transform: translateY(0);
+        transition: transform 680ms cubic-bezier(0.76, 0, 0.24, 1);
+        will-change: transform;
+      }
+
+      .opening-panel:nth-child(2) {
+        background: #18513d;
+        transition-delay: 110ms;
+      }
+
+      .opening-panel:nth-child(3) {
+        background: #23694f;
+        transition-delay: 220ms;
+      }
+
+      .opening-panel:nth-child(4) {
+        background: #2f765b;
+        transition-delay: 330ms;
+      }
+
+      #loading-screen.is-opening .opening-panel {
+        transform: translateY(-100%);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .opening-panel {
+          transition-duration: 1ms;
+          transition-delay: 0ms !important;
         }
       }
     </style>
-    
+
     <div id="root"></div>
     <script type="module" src="/src/app/main.tsx"></script>
   </body>

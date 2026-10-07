@@ -648,7 +648,9 @@
   background: #dfe7e1;
   border: 1px solid #cad6ce;
   border-radius: clamp(0.7rem, 1.5vw, 1rem);
-  box-shadow: 0 1rem 2.6rem rgb(10 51 36 / 10%);
+  box-shadow:
+    0 0.35rem 0.9rem rgb(10 51 36 / 8%),
+    0 1.35rem 3rem rgb(10 51 36 / 18%);
 }
 
 .officePhoto > picture {
