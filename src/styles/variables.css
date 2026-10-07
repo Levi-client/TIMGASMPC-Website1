@@ -45,8 +45,14 @@
   --shadow-lg: 0 24px 60px rgb(10 37 28 / 0.16);
   --container: 74rem;
   --container-narrow: 48rem;
-  --header-height: 5rem;
+  --header-height: 3.75rem;
   --breakpoint-sm: 36rem;
   --breakpoint-md: 48rem;
   --breakpoint-lg: 64rem;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --header-height: 4.5rem;
+  }
 }

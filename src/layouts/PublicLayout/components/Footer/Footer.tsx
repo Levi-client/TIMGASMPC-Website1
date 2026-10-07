@@ -1,14 +1,10 @@
 import { Globe2, Mail, MapPin, Phone } from "lucide-react";
-import officeCutout from "@/assets/images/office/timgas-office-footer-cutout.webp";
 import { BrandMark } from "@/components/shared/BrandMark/BrandMark";
 import styles from "@/styles/user/Footer.module.css";
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.officeArtwork} aria-hidden="true">
-        <img src={officeCutout} alt="" />
-      </div>
       <div className={`container ${styles.grid}`}>
         <div className={styles.summary}>
           <BrandMark inverse />
@@ -35,6 +31,26 @@ export function Footer() {
           </a>
           <a href="mailto:timgascooperative@gmail.com">
             <Mail size={17} /> timgascooperative@gmail.com
+          </a>
+          <a
+            href="https://www.facebook.com/timgas.mpc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>{" "}
+            facebook.com/timgas.mpc
           </a>
         </div>
       </div>
