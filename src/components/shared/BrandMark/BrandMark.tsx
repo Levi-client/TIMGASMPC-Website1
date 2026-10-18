@@ -1,6 +1,6 @@
 import styles from "@/styles/shared/BrandMark.module.css";
 
-const logo = "/timgas-logo-256.webp";
+const logo = "/timgas-brand.webp";
 
 type BrandMarkProps = {
   compact?: boolean;
@@ -18,7 +18,7 @@ export function BrandMark({
       className={`${styles.brand} ${compact ? styles.compact : ""} ${iconOnly ? styles.iconOnly : ""} ${inverse ? styles.inverse : ""}`}
     >
       <span className={styles.mark} aria-hidden="true" data-logo-mark>
-        <img src={logo} alt="" />
+        <img src={logo} alt="" width="64" height="64" fetchPriority="high" />
       </span>
       <span className={styles.copy}>
         <strong>TIMGAS</strong>

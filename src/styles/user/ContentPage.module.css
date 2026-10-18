@@ -635,6 +635,11 @@
   overflow-wrap: anywhere;
 }
 
+.contactMethods a {
+  min-height: 1.75rem;
+  padding-block: 0.2rem;
+}
+
 .contactMethods a:hover,
 .contactLinks a:hover {
   color: var(--color-brand-950);

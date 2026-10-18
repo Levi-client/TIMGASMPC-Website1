@@ -10,7 +10,7 @@ const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
 const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
 
 export async function fetchPublishedPosts(): Promise<PublishedPost[]> {
-  if (!projectId || !apiKey) return [];
+  if (!projectId || !apiKey || apiKey === "your_api_key") return [];
 
   const response = await fetch(
     `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:runQuery?key=${apiKey}`,

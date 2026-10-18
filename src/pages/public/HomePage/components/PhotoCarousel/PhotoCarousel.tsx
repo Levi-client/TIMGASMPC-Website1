@@ -20,7 +20,16 @@ type PhotoCarouselProps = {
 export function PhotoCarousel({ ariaLabel, photos }: PhotoCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [loadedPhotos, setLoadedPhotos] = useState(() => new Set([0]));
   const currentPhoto = photos[currentIndex];
+
+  useEffect(() => {
+    const nextIndex = (currentIndex + 1) % photos.length;
+    setLoadedPhotos((loaded) => {
+      if (loaded.has(currentIndex) && loaded.has(nextIndex)) return loaded;
+      return new Set([...loaded, currentIndex, nextIndex]);
+    });
+  }, [currentIndex, photos.length]);
 
   useEffect(() => {
     if (photos.length < 2 || isPaused) return;
@@ -81,33 +90,39 @@ export function PhotoCarousel({ ariaLabel, photos }: PhotoCarouselProps) {
             className={styles.track}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {photos.map((photo, index) => (
-              <picture key={photo.src}>
-                {photo.avifSrcSet && (
-                  <source
-                    type="image/avif"
-                    srcSet={photo.avifSrcSet}
-                    sizes="(min-width: 64rem) 42vw, 92vw"
+            {photos.map((photo, index) => {
+              const shouldLoad =
+                loadedPhotos.has(index) || index === currentIndex;
+
+              return (
+                <picture key={photo.src}>
+                  {shouldLoad && photo.avifSrcSet && (
+                    <source
+                      type="image/avif"
+                      srcSet={photo.avifSrcSet}
+                      sizes="auto, (min-width: 64rem) 600px, 92vw"
+                    />
+                  )}
+                  {shouldLoad && photo.webpSrcSet && (
+                    <source
+                      type="image/webp"
+                      srcSet={photo.webpSrcSet}
+                      sizes="auto, (min-width: 64rem) 600px, 92vw"
+                    />
+                  )}
+                  <img
+                    sizes="auto, (min-width: 64rem) 600px, 92vw"
+                    src={shouldLoad ? photo.src : undefined}
+                    alt={photo.alt}
+                    aria-hidden={index !== currentIndex}
+                    width={photo.width}
+                    height={photo.height}
+                    loading="lazy"
+                    decoding="async"
                   />
-                )}
-                {photo.webpSrcSet && (
-                  <source
-                    type="image/webp"
-                    srcSet={photo.webpSrcSet}
-                    sizes="(min-width: 64rem) 42vw, 92vw"
-                  />
-                )}
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  aria-hidden={index !== currentIndex}
-                  width={photo.width}
-                  height={photo.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-            ))}
+                </picture>
+              );
+            })}
           </span>
         </button>
       </div>
