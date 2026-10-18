@@ -16,11 +16,17 @@
   padding: 0.9rem 0 0 0.9rem;
 }
 
+.officeVisual picture {
+  display: block;
+  min-width: 0;
+}
+
 .officeVisual img {
   position: relative;
   z-index: 1;
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
@@ -646,8 +652,8 @@
 }
 
 @media (max-width: 47.99rem) {
-  .story {
-    padding: 2.5rem 0 0.75rem;
+  :global(.section).story {
+    padding: 2.5rem 0 0.5rem;
   }
 
   .officeVisual {
@@ -724,6 +730,10 @@
   .officeVisual {
     align-self: stretch;
     box-sizing: border-box;
+  }
+
+  .officeVisual picture {
+    height: 100%;
   }
 
   .officeVisual img {
