@@ -51,19 +51,22 @@ export function Header() {
         .filter((section): section is { id: string; element: HTMLElement } =>
           Boolean(section.element),
         );
-      const containingSection = sections.find(({ element }) => {
-        const bounds = element.getBoundingClientRect();
+      const measuredSections = sections.map((section) => ({
+        ...section,
+        bounds: section.element.getBoundingClientRect(),
+      }));
+      const containingSection = measuredSections.find(({ bounds }) => {
         return bounds.top <= marker && bounds.bottom > marker;
       });
-      const nearestSection = sections.reduce<
-        (typeof sections)[number] | undefined
+      const nearestSection = measuredSections.reduce<
+        (typeof measuredSections)[number] | undefined
       >((nearest, section) => {
         if (!nearest) return section;
         const distance = Math.abs(
-          section.element.getBoundingClientRect().top - marker,
+          section.bounds.top - marker,
         );
         const nearestDistance = Math.abs(
-          nearest.element.getBoundingClientRect().top - marker,
+          nearest.bounds.top - marker,
         );
         return distance < nearestDistance ? section : nearest;
       }, undefined);
@@ -98,7 +101,6 @@ export function Header() {
           to="/"
           className={styles.logo}
           onClick={closeMenu}
-          aria-label="TIMGAS home"
           data-logo-target
         >
           <BrandMark />

@@ -9,7 +9,10 @@ import {
   Star,
   Users,
 } from "lucide-react";
-import officeImage from "@/assets/images/website/optimized/front-view-960.webp";
+import officeImage640Avif from "@/assets/images/website/optimized/front-view-640.avif";
+import officeImage960Avif from "@/assets/images/website/optimized/front-view-960.avif";
+import officeImage640Webp from "@/assets/images/website/optimized/front-view-640.webp";
+import officeImage960Webp from "@/assets/images/website/optimized/front-view-960.webp";
 import missionStatsImage from "@/assets/images/website/timgas-mission-stats.webp";
 import visionStatsImage from "@/assets/images/website/timgas-vision-stats.webp";
 import { Button } from "@/components/shared/Button/Button";
@@ -38,17 +41,20 @@ const coreValueDetails = [
   },
   {
     title: "Integrity",
-    description: "We uphold the highest standards of ethics and accountability.",
+    description:
+      "We uphold the highest standards of ethics and accountability.",
     icon: Users,
   },
   {
     title: "Model cooperative",
-    description: "We practice the true spirit of cooperation and mutual support.",
+    description:
+      "We practice the true spirit of cooperation and mutual support.",
     icon: Handshake,
   },
   {
     title: "God-fearing",
-    description: "We put our faith in God as our source of strength and guidance.",
+    description:
+      "We put our faith in God as our source of strength and guidance.",
     icon: Leaf,
   },
   {
@@ -93,10 +99,26 @@ export function AboutPage() {
         <div className={`container ${styles.storyGrid}`}>
           <figure className={styles.officeVisual}>
             <span className={styles.imageAccent} aria-hidden="true" />
-            <img
-              src={officeImage}
-              alt="TIMGAS MPC cooperative office in Trinidad, Bohol"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet={`${officeImage640Avif} 640w, ${officeImage960Avif} 960w`}
+                sizes="(min-width: 68rem) 30vw, (min-width: 48rem) 48vw, calc(100vw - 2rem)"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${officeImage640Webp} 640w, ${officeImage960Webp} 960w`}
+                sizes="(min-width: 68rem) 30vw, (min-width: 48rem) 48vw, calc(100vw - 2rem)"
+              />
+              <img
+                src={officeImage960Webp}
+                alt="TIMGAS MPC cooperative office in Trinidad, Bohol"
+                width="960"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
 
           <div className={styles.storyIntro}>
@@ -204,12 +226,12 @@ export function AboutPage() {
             <header className={styles.coreValuesHeading}>
               <p className="eyebrow">Our core values</p>
               <h2>
-                <span>The values behind</span>{" "}
-                <span>TIMGAS.</span>
+                <span>The values behind</span> <span>TIMGAS.</span>
               </h2>
               <p>
                 Our core values guide our actions and keep us focused on what
-                truly matters: our members, our community, and a better tomorrow.
+                truly matters: our members, our community, and a better
+                tomorrow.
               </p>
             </header>
             <div className={styles.valueGrid}>

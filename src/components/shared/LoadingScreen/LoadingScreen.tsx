@@ -20,17 +20,17 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
       () => {
         loadingElement.classList.add("is-opening");
       },
-      reducedMotion ? 0 : 180,
+      0,
     );
 
     const revealTimer = window.setTimeout(
       () => window.dispatchEvent(new Event("timgas:hero-ready")),
-      reducedMotion ? 0 : 720,
+      reducedMotion ? 0 : 160,
     );
 
     const cleanupTimer = window.setTimeout(
       () => loadingElement.remove(),
-      reducedMotion ? 50 : 1250,
+      reducedMotion ? 50 : 600,
     );
 
     return () => {

@@ -27,7 +27,7 @@
   inset: -12% -8%;
   content: "";
   pointer-events: none;
-  background: url("@/assets/images/website/footer-smoke.png") center / cover
+  background: url("@/assets/images/website/footer-smoke.webp") center / cover
     no-repeat;
   opacity: 0.42;
   transform: translate3d(-2%, 1%, 0) scale(1.04);
@@ -72,6 +72,9 @@
   line-height: 1.35;
   text-decoration: none;
   overflow-wrap: anywhere;
+}
+.grid a {
+  min-height: 1.75rem;
 }
 .grid a:hover {
   color: white;

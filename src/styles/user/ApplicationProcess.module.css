@@ -84,7 +84,7 @@
   width: min(22%, 14.5rem);
   min-width: 9rem;
   color: var(--color-brand-950);
-  opacity: 0.45;
+  opacity: 1;
   transform: translateY(0.45rem);
   transition:
     opacity 300ms ease,

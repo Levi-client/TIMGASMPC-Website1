@@ -24,24 +24,18 @@ import hero1440Webp from "@/assets/images/website/optimized/hero-1440.webp";
 import officeFacadeImage from "@/assets/images/office/timgas-office-facade.jpg";
 import officeFacade640Avif from "@/assets/images/office/optimized/office-facade-640.avif";
 import officeFacade960Avif from "@/assets/images/office/optimized/office-facade-960.avif";
-import officeFacade1440Avif from "@/assets/images/office/optimized/office-facade-1440.avif";
 import officeFacade640Webp from "@/assets/images/office/optimized/office-facade-640.webp";
 import officeFacade960Webp from "@/assets/images/office/optimized/office-facade-960.webp";
-import officeFacade1440Webp from "@/assets/images/office/optimized/office-facade-1440.webp";
 import roadsideSignImage from "@/assets/images/office/timgas-roadside-sign.jpg";
 import roadsideSign640Avif from "@/assets/images/office/optimized/roadside-sign-640.avif";
 import roadsideSign960Avif from "@/assets/images/office/optimized/roadside-sign-960.avif";
-import roadsideSign1440Avif from "@/assets/images/office/optimized/roadside-sign-1440.avif";
 import roadsideSign640Webp from "@/assets/images/office/optimized/roadside-sign-640.webp";
 import roadsideSign960Webp from "@/assets/images/office/optimized/roadside-sign-960.webp";
-import roadsideSign1440Webp from "@/assets/images/office/optimized/roadside-sign-1440.webp";
 import frontView from "@/assets/images/website/Timgas.png";
 import frontView640Avif from "@/assets/images/website/optimized/front-view-640.avif";
 import frontView960Avif from "@/assets/images/website/optimized/front-view-960.avif";
-import frontView1440Avif from "@/assets/images/website/optimized/front-view-1440.avif";
 import frontView640Webp from "@/assets/images/website/optimized/front-view-640.webp";
 import frontView960Webp from "@/assets/images/website/optimized/front-view-960.webp";
-import frontView1440Webp from "@/assets/images/website/optimized/front-view-1440.webp";
 import { principles } from "@/data/content";
 import { AboutPage } from "@/pages/public/AboutPage/AboutPage";
 import { ContactPage } from "@/pages/public/ContactPage/ContactPage";
@@ -53,8 +47,8 @@ import styles from "@/styles/user/HomePage.module.css";
 const officePhotos: CarouselPhoto[] = [
   {
     src: officeImage,
-    avifSrcSet: `${hero640Avif} 640w, ${hero960Avif} 960w, ${hero1440Avif} 1440w`,
-    webpSrcSet: `${hero640Webp} 640w, ${hero960Webp} 960w, ${hero1440Webp} 1440w`,
+    avifSrcSet: `${hero640Avif} 640w, ${hero960Avif} 960w`,
+    webpSrcSet: `${hero640Webp} 640w, ${hero960Webp} 960w`,
     alt: "Front entrance of the TIMGAS Multi-Purpose Cooperative office",
     caption: "TIMGAS cooperative office",
     width: 1536,
@@ -62,8 +56,8 @@ const officePhotos: CarouselPhoto[] = [
   },
   {
     src: officeFacadeImage,
-    avifSrcSet: `${officeFacade640Avif} 640w, ${officeFacade960Avif} 960w, ${officeFacade1440Avif} 1440w`,
-    webpSrcSet: `${officeFacade640Webp} 640w, ${officeFacade960Webp} 960w, ${officeFacade1440Webp} 1440w`,
+    avifSrcSet: `${officeFacade640Avif} 640w, ${officeFacade960Avif} 960w`,
+    webpSrcSet: `${officeFacade640Webp} 640w, ${officeFacade960Webp} 960w`,
     alt: "Upper facade and main sign of the TIMGAS MPC office",
     caption: "Office facade and main sign",
     width: 1600,
@@ -71,8 +65,8 @@ const officePhotos: CarouselPhoto[] = [
   },
   {
     src: roadsideSignImage,
-    avifSrcSet: `${roadsideSign640Avif} 640w, ${roadsideSign960Avif} 960w, ${roadsideSign1440Avif} 1440w`,
-    webpSrcSet: `${roadsideSign640Webp} 640w, ${roadsideSign960Webp} 960w, ${roadsideSign1440Webp} 1440w`,
+    avifSrcSet: `${roadsideSign640Avif} 640w, ${roadsideSign960Avif} 960w`,
+    webpSrcSet: `${roadsideSign640Webp} 640w, ${roadsideSign960Webp} 960w`,
     alt: "TIMGAS MPC roadside sign in Trinidad, Bohol",
     caption: "TIMGAS roadside sign",
     width: 1600,
@@ -80,8 +74,8 @@ const officePhotos: CarouselPhoto[] = [
   },
   {
     src: frontView,
-    avifSrcSet: `${frontView640Avif} 640w, ${frontView960Avif} 960w, ${frontView1440Avif} 1440w`,
-    webpSrcSet: `${frontView640Webp} 640w, ${frontView960Webp} 960w, ${frontView1440Webp} 1440w`,
+    avifSrcSet: `${frontView640Avif} 640w, ${frontView960Avif} 960w`,
+    webpSrcSet: `${frontView640Webp} 640w, ${frontView960Webp} 960w`,
     alt: "Front view of the TIMGAS MPC office",
     caption: "Front view of the office",
     width: 1536,

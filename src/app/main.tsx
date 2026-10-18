@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from '@/app/App';
 import { LoadingScreen } from '@/components/shared/LoadingScreen/LoadingScreen';
+import '@/styles/fonts.css';
 import '@/styles/variables.css';
 import '@/styles/global.css';
 
